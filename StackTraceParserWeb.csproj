@@ -6,12 +6,4 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Redme.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Redme.md" />
-  </ItemGroup>
-
 </Project>
