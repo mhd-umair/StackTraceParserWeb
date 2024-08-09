@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Stack Trace Viewer";
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header text-center">
+            <h1 class="h3">Stack Trace Viewer</h1>
+        </div>
+        <div class="card-body">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger">
+                    Please correct the errors in the form.
+                </div>
+            }
+
+            <div class="legend mb-4">
+                <h5>Legend:</h5>
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="bi bi-code-slash"></i> Method Name
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="bi bi-file-earmark-text"></i> File Path
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="bi bi-hash"></i> Line Number
+                    </li>
+                </ul>
+            </div>
+
+            <form id="stackTraceForm" method="post" action="/Home/ParseStackTrace" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="stackTraceInput">Paste Stack Trace:</label>
+                    <textarea class="form-control @(ViewData.ModelState.IsValid ? "" : "is-invalid")"
+                              id="stackTraceInput"
+                              name="stackTrace"
+                              rows="6"
+                              placeholder="Paste stack trace here..."
+                              required>@Html.Raw(ViewData.ModelState["stackTrace"]?.AttemptedValue)</textarea>
+                    <div class="invalid-feedback">
+                        @ViewData.ModelState["stackTrace"]?.Errors.FirstOrDefault()?.ErrorMessage ?? "Please enter a stack trace."
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Parse Stack Trace</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <div id="parsedOutput" class="mt-3"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
