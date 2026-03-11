@@ -60,7 +60,7 @@ The Stack Trace Parser Web Application is an ASP.NET Core MVC application design
 
 ## Usage
 
-1. **Paste your stack trace** into the provided textarea on the home page.
+1. **Paste your stack trace** into the provided textarea on the home page. Ensure that complete stack trace is pasted.
 2. **Click "Parse Stack Trace"** to format the stack trace and view it in a more readable format.
 3. **Review the output**, which includes the parsed stack trace with highlighted method names, file paths, and line numbers, as well as any exception details.
 
